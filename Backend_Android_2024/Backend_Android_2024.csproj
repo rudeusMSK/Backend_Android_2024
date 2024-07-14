@@ -271,6 +271,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageProductAPIController.cs" />
     <Compile Include="Controllers\ProductAPIController.cs" />
     <Compile Include="Controllers\SanPhamsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -383,6 +384,17 @@
       <DependentUpon>ShopSportingDB.edmx</DependentUpon>
       <LastGenOutput>ShopSportingDB.cs</LastGenOutput>
     </Content>
+    <Content Include="public\images\B1.png" />
+    <Content Include="public\images\B2.jpg" />
+    <Content Include="public\images\B3.png" />
+    <Content Include="public\images\B4.png" />
+    <Content Include="public\images\B5.png" />
+    <Content Include="public\images\B6.png" />
+    <Content Include="public\images\G1.png" />
+    <Content Include="public\images\G2.png" />
+    <Content Include="public\images\G3.png" />
+    <Content Include="public\images\G4.png" />
+    <Content Include="public\images\N1.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
