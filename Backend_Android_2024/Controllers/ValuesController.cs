@@ -5,15 +5,12 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+// code mẫu ko sài ! xóa sau á.
 namespace Backend_Android_2024.Controllers
 {
     public class ValuesController : ApiController
     {
         // GET api/values
-        /// <summary>
-        /// Lấy thông tin sản phẩm
-        /// </summary>
-        /// <returns></returns>
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };

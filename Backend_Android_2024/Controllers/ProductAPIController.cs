@@ -19,6 +19,10 @@ namespace Backend_Android_2024.Controllers
         private TestShoppingEntities db = new TestShoppingEntities();
 
         // GET: api/ProductAPI
+        /// <summary>
+        /// Đã sài được. :3
+        /// </summary>
+        /// <returns></returns>
         public IQueryable<ProductDTO> GetSanPhams()
         {
             return db.SanPhams.Select(sp => new ProductDTO
@@ -99,43 +103,6 @@ namespace Backend_Android_2024.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        //// POST: api/ProductAPI
-        //[ResponseType(typeof(ProductDTO))]
-        //public async Task<IHttpActionResult> PostSanPham(ProductDTO productDTO)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    var sanPham = new SanPham
-        //    {
-        //        IDSP = productDTO.IDSP,
-        //        TenSP = productDTO.TenSP,
-        //        // Chuyển đổi các thuộc tính khác
-        //    };
-
-        //    db.SanPhams.Add(sanPham);
-
-        //    try
-        //    {
-        //        await db.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateException)
-        //    {
-        //        if (SanPhamExists(sanPham.IDSP))
-        //        {
-        //            return Conflict();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return CreatedAtRoute("DefaultApi", new { id = sanPham.IDSP }, productDTO);
-        //}
-
         // POST: api/ProductAPI
         [ResponseType(typeof(ProductDTO))]
         public async Task<IHttpActionResult> PostProduct(ProductDTO productDTO)
@@ -163,7 +130,6 @@ namespace Backend_Android_2024.Controllers
             return CreatedAtRoute("DefaultApi", new { id = sanPham.IDSP }, productDTO);
         }
 
-
         // DELETE: api/ProductAPI/5
         [ResponseType(typeof(ProductDTO))]
         public async Task<IHttpActionResult> DeleteSanPham(int id)
@@ -181,7 +147,11 @@ namespace Backend_Android_2024.Controllers
             {
                 IDSP = sanPham.IDSP,
                 TenSP = sanPham.TenSP,
-                // Chuyển đổi các thuộc tính khác
+                IDThuongHieu = sanPham.IDThuongHieu,
+                IDLoai = sanPham.IDLoai,
+                IDMau = sanPham.IDMau,
+                IDTrangThai = sanPham.IDTrangThai,
+                IDNV = sanPham.IDNV
             });
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+// Model - v1
 namespace Backend_Android_2024.Models.DTOModel
 {
     public class DetailProductDTO

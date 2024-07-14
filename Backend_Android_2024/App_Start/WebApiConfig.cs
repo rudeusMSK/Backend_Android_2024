@@ -26,13 +26,13 @@ namespace Backend_Android_2024
                 Console.WriteLine(ex.Message);
             }
 
-            // Web API configuration and services
+            //config: Cors
             config.EnableCors();
             var cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(cors);
-            // Web API routes
+            //config: routes
             config.MapHttpAttributeRoutes();
-            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new System.Net.Http.Headers.MediaTypeHeaderValue("text/html"));
+            //config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new System.Net.Http.Headers.MediaTypeHeaderValue("text/html"));
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
