@@ -28,9 +28,11 @@ namespace Backend_Android_2024.Models
         public string DiaChiNhanHang { get; set; }
         public string SDTNhanHang { get; set; }
         public int IDND { get; set; }
+        public int IDNV { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CT_DonDatHang> CT_DonDatHang { get; set; }
         public virtual NguoiDung NguoiDung { get; set; }
+        public virtual NhanVien NhanVien { get; set; }
     }
 }

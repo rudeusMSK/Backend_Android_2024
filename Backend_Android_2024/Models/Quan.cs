@@ -12,25 +12,18 @@ namespace Backend_Android_2024.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class NhanVien
+    public partial class Quan
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NhanVien()
+        public Quan()
         {
-            this.DonDatHangs = new HashSet<DonDatHang>();
-            this.SanPhams = new HashSet<SanPham>();
+            this.DiaChiNDs = new HashSet<DiaChiND>();
         }
     
-        public int IDNV { get; set; }
-        public string TenNV { get; set; }
-        public string SDT { get; set; }
-        public string Email { get; set; }
-        public bool TrangThaiNV { get; set; }
-        public int IDQuyen { get; set; }
+        public int IDQuan { get; set; }
+        public string TenQuan { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DonDatHang> DonDatHangs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SanPham> SanPhams { get; set; }
+        public virtual ICollection<DiaChiND> DiaChiNDs { get; set; }
     }
 }

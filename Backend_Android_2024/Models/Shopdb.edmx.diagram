@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="01a79842ed2d4729af2077ca12817f4d" Name="Diagram1">
+        <EntityTypeShape EntityType="TestShoppingModel.ChiTiet_SP" Width="1.5" PointX="11.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShoppingModel.ChiTietDiaChi" Width="1.5" PointX="15.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShoppingModel.CT_DonDatHang" Width="1.5" PointX="8.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShoppingModel.DanhGia" Width="1.5" PointX="8.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShoppingModel.DiaChiND" Width="1.5" PointX="13" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShoppingModel.DonDatHang" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShoppingModel.HinhAnh" Width="1.5" PointX="8.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShoppingModel.KichThuoc" Width="1.5" PointX="9" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShoppingModel.LoaiSP" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShoppingModel.MauSac" Width="1.5" PointX="3.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShoppingModel.NguoiDung" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShoppingModel.NhanVien" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShoppingModel.PhanQuyen" Width="1.5" PointX="1.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShoppingModel.Quan" Width="1.5" PointX="10.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShoppingModel.SanPham" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShoppingModel.ThanhPho" Width="1.5" PointX="10.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShoppingModel.ThuongHieu" Width="1.5" PointX="3.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShoppingModel.TinhThanh" Width="1.5" PointX="10.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShoppingModel.TrangThai" Width="1.5" PointX="3.75" PointY="13.25" IsExpanded="true" />
+        <AssociationConnector Association="TestShoppingModel.FK__ChiTiet_S__IDKic__0C1BC9F9" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShoppingModel.FK__ChiTiet_SP__IDSP__0B27A5C0" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShoppingModel.FK__ChiTietDi__IDdia__084B3915" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShoppingModel.FK__ChiTietDia__IDND__075714DC" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShoppingModel.FK__CT_DonDat__IDDon__12C8C788" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShoppingModel.FK__CT_DonDatH__IDSP__13BCEBC1" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShoppingModel.FK__DanhGia__IDND__7FB5F314" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShoppingModel.FK__DanhGia__IDSP__00AA174D" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShoppingModel.FK__DiaChiND__IDQuan__74444068" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShoppingModel.FK__DiaChiND__IDThan__725BF7F6" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShoppingModel.FK__DiaChiND__IDtinh__73501C2F" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShoppingModel.FK__DonDatHang__IDND__038683F8" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShoppingModel.FK__DonDatHang__IDNV__047AA831" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShoppingModel.FK__HinhAnh__IDSP__7CD98669" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShoppingModel.FK__SanPham__IDMau__7908F585" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShoppingModel.FK__NguoiDung__IDQuy__6D9742D9" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShoppingModel.FK__SanPham__IDNV__7814D14C" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShoppingModel.FK__SanPham__IDThuon__7720AD13" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShoppingModel.FK__SanPham__IDTrang__79FD19BE" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShoppingModel.yeuThich" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

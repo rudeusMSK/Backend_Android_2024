@@ -17,13 +17,13 @@ namespace Backend_Android_2024.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PhanQuyen()
         {
-            this.NhanViens = new HashSet<NhanVien>();
+            this.NguoiDungs = new HashSet<NguoiDung>();
         }
     
         public int IDQuyen { get; set; }
         public string TenQuyen { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NhanVien> NhanViens { get; set; }
+        public virtual ICollection<NguoiDung> NguoiDungs { get; set; }
     }
 }

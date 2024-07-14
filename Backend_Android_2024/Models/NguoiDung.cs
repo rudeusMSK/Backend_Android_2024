@@ -32,6 +32,7 @@ namespace Backend_Android_2024.Models
         public Nullable<int> Tuoi { get; set; }
         public string MatKhau { get; set; }
         public string TenDangNhap { get; set; }
+        public int IDQuyen { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDiaChi> ChiTietDiaChis { get; set; }
@@ -39,6 +40,7 @@ namespace Backend_Android_2024.Models
         public virtual ICollection<DanhGia> DanhGias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonDatHang> DonDatHangs { get; set; }
+        public virtual PhanQuyen PhanQuyen { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SanPham> SanPhams { get; set; }
     }
