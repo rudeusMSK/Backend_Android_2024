@@ -13,6 +13,7 @@ namespace Backend_Android_2024
     {
         public static void Register()
         {
+
             var thisAssembly = typeof(SwaggerConfig).Assembly;
 
             GlobalConfiguration.Configuration

@@ -1,13 +1,9 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using Swashbuckle.Application;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
 using System.Net.Http.Formatting;
-using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Net.Http.Headers;
 
 namespace Backend_Android_2024
 {
@@ -15,30 +11,20 @@ namespace Backend_Android_2024
     {
         public static void Register(HttpConfiguration config)
         {
-            try
-            {
-                var c = new SwaggerEnabledConfiguration(GlobalConfiguration.Configuration, s => "", new List<string>());
-                Console.WriteLine("Success");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Failure");
-                Console.WriteLine(ex.Message);
-            }
-
-            //config: Cors
-            config.EnableCors();
-            var cors = new EnableCorsAttribute("*", "*", "*");
+            // Cấu hình CORS
+            var cors = new EnableCorsAttribute("http://localhost:57790", "*", "*");
             config.EnableCors(cors);
-            //config: routes
+
+            // Cấu hình routes
             config.MapHttpAttributeRoutes();
-            //config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new System.Net.Http.Headers.MediaTypeHeaderValue("text/html"));
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            // configure json formatter
+
+            // Cấu hình JSON formatter
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
             JsonMediaTypeFormatter jsonFormatter = config.Formatters.JsonFormatter;
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
