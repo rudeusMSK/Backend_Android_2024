@@ -18,6 +18,14 @@ namespace Backend_Android_2024.Models.ServicesDTOModel
             public int GiaBan { get; set; }
 
         }
+
+
+        public class LoginUser
+        {
+            public string UserName { get; set; }
+            public string Password { get; set; }
+        }
+
     }
 
 }

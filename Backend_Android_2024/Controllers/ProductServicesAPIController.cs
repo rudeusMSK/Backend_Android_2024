@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Description;
+﻿using Backend_Android_2024.Models.ServicesDTOModel.Backend_Android_2024.Models.DTOModel;
 using Backend_Android_2024.Models;
-using Backend_Android_2024.Models.DTOModel;
-using Backend_Android_2024.Models.ServicesDTOModel.Backend_Android_2024.Models.DTOModel;
+using System.Linq;
+using System.Net.Http;
+using System.Web.Http;
 
 namespace Backend_Android_2024.Controllers
 {
@@ -20,28 +11,37 @@ namespace Backend_Android_2024.Controllers
         private TestShoppingEntities db = new TestShoppingEntities();
 
         /// <summary>
-        /// Get list Card Item for home page Flutter 
+        /// Lấy danh sách các sản phẩm cho trang chính Flutter 
         /// </summary>
         /// <returns></returns>
-        // GET: api/ServicesAPI
-        public IQueryable<ProductCartItemDTO> GetProductCart()
+        // GET: api/ProductServices
+        public IHttpActionResult GetProductCart()
         {
-            var query = db.SanPhams
-                    .Select(sp => new ProductCartItemDTO
-                    {
-                        IDSP = sp.IDSP,
-                        TenSP = sp.TenSP,
-                        Img_Url = db.HinhAnhs
-                                    .Where(i => i.IDSP == sp.IDSP)
-                                    .Select(i => i.TenHinh)
-                                    .FirstOrDefault(),
-                        GiaBan = db.ChiTiet_SP
-                                    .Where(ct => ct.IDSP == sp.IDSP)
-                                    .Select(ct => ct.GiaBan)
-                                    .FirstOrDefault(),
-                    });
+            // Lấy tất cả các cookie từ header
+            var cookies = Request.Headers.GetCookies("userInfo");
 
-            return query;
+            // Kiểm tra xem có bất kỳ cookie nào không
+            if (cookies.Count == 0 || !cookies.Any(cookie => cookie.Cookies.Any(c => c.Name == "userInfo")))
+            {
+                return Unauthorized(); // Trả về phản hồi 401 Unauthorized
+            }
+
+            var query = db.SanPhams
+                .Select(sp => new ProductCartItemDTO
+                {
+                    IDSP = sp.IDSP,
+                    TenSP = sp.TenSP,
+                    Img_Url = db.HinhAnhs
+                                .Where(i => i.IDSP == sp.IDSP)
+                                .Select(i => i.TenHinh)
+                                .FirstOrDefault(),
+                    GiaBan = db.ChiTiet_SP
+                                .Where(ct => ct.IDSP == sp.IDSP)
+                                .Select(ct => ct.GiaBan)
+                                .FirstOrDefault(),
+                });
+
+            return Ok(query); // Trả về phản hồi 200 OK với kết quả truy vấn
         }
 
         private bool SanPhamExists(int id)
