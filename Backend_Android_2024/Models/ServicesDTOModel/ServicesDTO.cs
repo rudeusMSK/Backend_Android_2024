@@ -26,6 +26,12 @@ namespace Backend_Android_2024.Models.ServicesDTOModel
             public string Password { get; set; }
         }
 
+        public class CookieUser
+        {
+            public int UserID { get; set; }
+            public string Token { get; set; }
+        }
+
     }
 
 }

@@ -1,8 +1,10 @@
-﻿using Backend_Android_2024.Models.ServicesDTOModel.Backend_Android_2024.Models.DTOModel;
-using Backend_Android_2024.Models;
+﻿using System.Data;
 using System.Linq;
-using System.Net.Http;
 using System.Web.Http;
+using Backend_Android_2024.Models;
+using Backend_Android_2024.Models.ServicesDTOModel.Backend_Android_2024.Models.DTOModel;
+using System.Diagnostics;
+using System;
 
 namespace Backend_Android_2024.Controllers
 {
@@ -11,37 +13,38 @@ namespace Backend_Android_2024.Controllers
         private TestShoppingEntities db = new TestShoppingEntities();
 
         /// <summary>
-        /// Lấy danh sách các sản phẩm cho trang chính Flutter 
+        /// Get list Card Item for home page Flutter 
         /// </summary>
         /// <returns></returns>
         // GET: api/ProductServices
+        [HttpGet]
+        [Route("api/ProductServices")]
         public IHttpActionResult GetProductCart()
         {
-            // Lấy tất cả các cookie từ header
-            var cookies = Request.Headers.GetCookies("userInfo");
-
-            // Kiểm tra xem có bất kỳ cookie nào không
-            if (cookies.Count == 0 || !cookies.Any(cookie => cookie.Cookies.Any(c => c.Name == "userInfo")))
+            try
             {
-                return Unauthorized(); // Trả về phản hồi 401 Unauthorized
+                var query = db.SanPhams
+                    .Select(sp => new ProductCartItemDTO
+                    {
+                        IDSP = sp.IDSP,
+                        TenSP = sp.TenSP,
+                        Img_Url = db.HinhAnhs
+                                    .Where(i => i.IDSP == sp.IDSP)
+                                    .Select(i => i.TenHinh)
+                                    .FirstOrDefault(),
+                        GiaBan = db.ChiTiet_SP
+                                    .Where(ct => ct.IDSP == sp.IDSP)
+                                    .Select(ct => ct.GiaBan)
+                                    .FirstOrDefault(),
+                    }).ToList();
+
+                return Ok(query);
             }
-
-            var query = db.SanPhams
-                .Select(sp => new ProductCartItemDTO
-                {
-                    IDSP = sp.IDSP,
-                    TenSP = sp.TenSP,
-                    Img_Url = db.HinhAnhs
-                                .Where(i => i.IDSP == sp.IDSP)
-                                .Select(i => i.TenHinh)
-                                .FirstOrDefault(),
-                    GiaBan = db.ChiTiet_SP
-                                .Where(ct => ct.IDSP == sp.IDSP)
-                                .Select(ct => ct.GiaBan)
-                                .FirstOrDefault(),
-                });
-
-            return Ok(query); // Trả về phản hồi 200 OK với kết quả truy vấn
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error in GetProductCart: {ex.Message}");
+                return InternalServerError();
+            }
         }
 
         private bool SanPhamExists(int id)

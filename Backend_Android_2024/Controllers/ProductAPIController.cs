@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using Backend_Android_2024.Models;
 using Backend_Android_2024.Models.DTOModel;
@@ -60,6 +61,7 @@ namespace Backend_Android_2024.Controllers
         }
 
         // PUT: api/ProductAPI/5
+        [HttpPost]
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutSanPham(int id, ProductDTO sanPhamDTO)
         {
@@ -104,6 +106,7 @@ namespace Backend_Android_2024.Controllers
         }
 
         // POST: api/ProductAPI
+        [HttpPost]
         [ResponseType(typeof(ProductDTO))]
         public async Task<IHttpActionResult> PostProduct(ProductDTO productDTO)
         {

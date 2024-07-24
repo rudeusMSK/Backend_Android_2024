@@ -17,14 +17,18 @@ using System.Web.Security;
 using System.Web;
 using Microsoft.Owin;
 using Owin;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Backend_Android_2024.Controllers
 {
+
     public class UserServicesController : ApiController
     {
         private TestShoppingEntities db = new TestShoppingEntities();
 
-        [ResponseType(typeof(UserDTO))]
+
+        [ResponseType(typeof(CookieUser))]
         public async Task<IHttpActionResult> Login(LoginUser loginUser)
         {
             try
@@ -40,19 +44,18 @@ namespace Backend_Android_2024.Controllers
                     return NotFound();
                 }
 
-                // Tạo cookie chứa thông tin người dùng
+
                 var userInfo = JsonConvert.SerializeObject(user);
-                var cookie = new HttpCookie("userInfo", userInfo);
-                cookie.Expires = DateTime.Now.AddDays(1); // Thiết lập cookie có hiệu lực trong 1 ngày
+                var hashedUserInfo = HashString(userInfo);
+                var cookie = new HttpCookie("userInfo", hashedUserInfo);
+                cookie.Expires = DateTime.Now.AddDays(1);
                 HttpContext.Current.Response.Cookies.Add(cookie);
 
                 // Trả về đối tượng UserDTO
-                return Ok(new UserDTO
+                return Ok(new CookieUser
                 {
-                    IDND = user.IDND,
-                    TenDangNhap = user.TenDangNhap,
-                    GioiTinh = user.GioiTinh,
-                    Email = user.Email
+                    UserID = user.IDND,
+                    Token = hashedUserInfo
                 });
             }
             catch (Exception ex)
@@ -61,5 +64,19 @@ namespace Backend_Android_2024.Controllers
                 return InternalServerError();
             }
         }
+        private string HashString(string input)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
+                var builder = new StringBuilder();
+                foreach (var @byte in bytes)
+                {
+                    builder.Append(@byte.ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
     }
 }
+
